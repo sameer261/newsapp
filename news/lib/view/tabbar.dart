@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/utils/colors.dart';
 import 'package:news/view/all.dart';
+import 'package:news/view/entertainment.dart';
 import 'package:news/view/top.dart';
 
 class CustomTabBarView extends StatelessWidget {
@@ -42,7 +43,7 @@ class CustomTabBarView extends StatelessWidget {
             children: [
               All(),
               Top(),
-              Center(child: Text('Entertainment Content')),
+              Entertainment(),
               Center(child: Text('Education Content')),
               Center(child: Text('Sports Content')),
             ],

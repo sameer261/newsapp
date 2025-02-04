@@ -25,7 +25,8 @@ class NewsArticle {
       pubDate: json['pubDate'] ?? 'No Date', // Provide default if null
       sourceName:
           json['source_name'] ?? 'World News', // Provide default if null
-      language: json['language'] ?? 'enG', // Default to 'en' (English) if null
+      language:
+          json['language'] ?? 'english', // Default to 'en' (English) if null
       category: json['category'] != null
           ? List<String>.from(json['category']) // Convert to List<String>
           : null, // If category doesn't exist, it's null
