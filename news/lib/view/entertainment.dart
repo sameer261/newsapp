@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news/controller/entertainment_controller.dart';
-import 'package:news/view/newspage.dart';
+import 'package:news/view/newspage2.dart';
 
 class Entertainment extends StatelessWidget {
   const Entertainment({super.key});
@@ -30,7 +30,7 @@ class Entertainment extends StatelessWidget {
                 bottom: 12), // Add space after each container
             child: GestureDetector(
               onTap: () {
-                Get.to(Newspage(), arguments: article);
+                Get.to(Newspage2(), arguments: article);
               },
               child: Container(
                 width: 343,

@@ -24,7 +24,8 @@ class Article {
       description: json['description'] ?? '',
       category: "Entertainment", // Hardcoded value
       publishedAt: json['publishedAt'] ?? '',
-      urlToImage: json['urlToImage'] ?? '',
+      urlToImage: json['urlToImage'] ??
+          'https://answers-afd.microsoft.com/static/images/image-not-found.jpg',
       sourceName: json['source']['name'] ??
           '', // Mapping source name from the source map
       language: json['language'] ??
