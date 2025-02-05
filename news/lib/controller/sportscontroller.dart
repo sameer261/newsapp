@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:news/services/api/entertainment/model.dart';
+import 'package:news/services/api/sports/model.dart';
 
-class EntertainmentController extends GetxController {
+class Sportscontroller extends GetxController {
   RxBool isLoading = true.obs;
   var newsList = <Article>[].obs;
 
@@ -19,7 +19,7 @@ class EntertainmentController extends GetxController {
     try {
       isLoading(true);
       final response = await http.get(Uri.parse(
-          'https://newsapi.org/v2/top-headlines?category=entertainment&apiKey=0aca74fe48d4493598ada32dc71ea04f'));
+          'https://newsapi.org/v2/top-headlines?category=sports&apiKey=0aca74fe48d4493598ada32dc71ea04f'));
 
       if (response.statusCode == 200) {
         var decodedJson = jsonDecode(response.body);

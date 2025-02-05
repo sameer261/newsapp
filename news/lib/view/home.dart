@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:news/controller/homecontroller.dart';
 import 'package:news/utils/colors.dart';
 import 'package:news/view/customappbar.dart';
-import 'package:news/view/tabbar.dart'; // Import the CustomTabBarView widget
+import 'package:news/view/tabbarview_pages/tabbar.dart'; // Import the CustomTabBarView widget
 
 class Home extends StatelessWidget {
   const Home({super.key});

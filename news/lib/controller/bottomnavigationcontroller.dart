@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:news/view/home.dart';
-import 'package:news/view/savedscreen.dart';
+import 'package:news/view/savedscreen/savedscreen.dart';
 
 class BottomNavigationController extends GetxController {
   // To store the selected index

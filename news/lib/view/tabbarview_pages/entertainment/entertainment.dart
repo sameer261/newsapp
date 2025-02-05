@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news/controller/allnewscontroller.dart';
-import 'package:news/view/newspage.dart'; // Import the NewsController
+import 'package:news/controller/entertainment_controller.dart';
+import 'package:news/view/newspage_fullview/newspage2.dart';
 
-class Allnews extends StatelessWidget {
-  const Allnews({super.key});
+class Entertainment extends StatelessWidget {
+  const Entertainment({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Initialize the controller
-    final NewsController newsController = Get.put(NewsController());
-
-    // Fetch the articles when the widget is first built
-    newsController.fetchArticles();
-
     // Get the screen width
     double screenWidth = MediaQuery.of(context).size.width;
+    // Initialize the controller
+    EntertainmentController newsController = Get.put(EntertainmentController());
 
     return Obx(() {
       if (newsController.isLoading.value) {
         return Center(
-            child: CircularProgressIndicator(
-          color: Colors.grey,
-        ));
+          child: CircularProgressIndicator(
+            color: Colors.grey,
+          ),
+        );
       }
 
       return ListView.builder(
@@ -35,7 +32,7 @@ class Allnews extends StatelessWidget {
                 bottom: 12), // Add space after each container
             child: GestureDetector(
               onTap: () {
-                Get.to(Newspage(), arguments: article);
+                Get.to(Newspage2(), arguments: article);
               },
               child: Container(
                 width: 343,
@@ -60,7 +57,7 @@ class Allnews extends StatelessWidget {
                           height: 62,
                           decoration: ShapeDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(article.imageUrl),
+                              image: NetworkImage(article.urlToImage),
                               fit: BoxFit.fill,
                             ),
                             shape: RoundedRectangleBorder(
@@ -76,9 +73,8 @@ class Allnews extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    // Conditionally show shortened source name based on screen width
                                     screenWidth < 400
-                                        ? _getLimitedSourceName(
+                                        ? newsController.getLimitedSourceName(
                                             article.sourceName)
                                         : article.sourceName,
                                     style: TextStyle(
@@ -98,7 +94,6 @@ class Allnews extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 2),
                                   Text(
-                                    overflow: TextOverflow.visible,
                                     article.language,
                                     style: TextStyle(
                                       color: Color(0xFF888888),
@@ -109,12 +104,10 @@ class Allnews extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 4),
-                              // Limit text to two lines only
                               Text(
                                 article.title,
-                                maxLines: 2, // Limit to 2 lines
-                                overflow:
-                                    TextOverflow.visible, // Handle overflow
+                                maxLines: 2,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                   color: Color(0xFFE8E8E8),
                                   fontSize: 16,
@@ -131,7 +124,7 @@ class Allnews extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          article.pubDate,
+                          article.publishedAt,
                           style: TextStyle(
                             color: Color(0xFF888888),
                             fontSize: 10,
@@ -164,12 +157,4 @@ class Allnews extends StatelessWidget {
       );
     });
   }
-}
-
-String _getLimitedSourceName(String sourceName) {
-  List<String> words = sourceName.split(" "); // Split the source name by space
-  if (words.length > 2) {
-    return words.take(2).join(" ") + "..."; // Join first 3 words with "..."
-  }
-  return sourceName; // If less than 3 words, return the full source name
 }

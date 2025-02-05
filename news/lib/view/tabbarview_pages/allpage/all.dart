@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news/controller/allpagecontroller.dart';
-import 'package:news/view/allnews.dart';
+import 'package:news/view/tabbarview_pages/allpage/allnews.dart';
 
 class All extends StatelessWidget {
   const All({super.key});

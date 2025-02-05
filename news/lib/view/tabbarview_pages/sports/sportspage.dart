@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news/controller/entertainment_controller.dart';
-import 'package:news/view/newspage2.dart';
+import 'package:news/controller/sportscontroller.dart';
+import 'package:news/view/newspage_fullview/newspage4.dart';
 
-class Entertainment extends StatelessWidget {
-  const Entertainment({super.key});
+class Sports extends StatelessWidget {
+  const Sports({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Get the screen width
+    double screenWidth = MediaQuery.of(context).size.width;
     // Initialize the controller
-    EntertainmentController newsController = Get.put(EntertainmentController());
+    Sportscontroller newsController = Get.put((Sportscontroller()));
 
     return Obx(() {
       if (newsController.isLoading.value) {
@@ -30,7 +32,7 @@ class Entertainment extends StatelessWidget {
                 bottom: 12), // Add space after each container
             child: GestureDetector(
               onTap: () {
-                Get.to(Newspage2(), arguments: article);
+                Get.to(Newspage4(), arguments: article);
               },
               child: Container(
                 width: 343,
@@ -71,7 +73,10 @@ class Entertainment extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    article.sourceName,
+                                    screenWidth < 400
+                                        ? newsController.getLimitedSourceName(
+                                            article.sourceName)
+                                        : article.sourceName,
                                     style: TextStyle(
                                       color: Color(0xFF888888),
                                       fontSize: 12,
@@ -102,7 +107,7 @@ class Entertainment extends StatelessWidget {
                               Text(
                                 article.title,
                                 maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
+                                overflow: TextOverflow.visible,
                                 style: TextStyle(
                                   color: Color(0xFFE8E8E8),
                                   fontSize: 16,

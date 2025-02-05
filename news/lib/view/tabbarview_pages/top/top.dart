@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/view/allnews.dart';
+import 'package:news/view/tabbarview_pages/allpage/allnews.dart';
 
 class Top extends StatelessWidget {
   const Top({super.key});

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:news/services/api/newsapi/newsmodel.dart'; // Import the NewsArticle model file
+import 'package:news/services/api/allpage_newsapi/newsmodel.dart'; // Import the NewsArticle model file
 
 class AllNewsService {
   // Fetching data from the API
